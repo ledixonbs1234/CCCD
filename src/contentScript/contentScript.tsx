@@ -19,6 +19,8 @@ chrome.runtime.onMessage.addListener((msg, sender, callback) => {
       b?.setAttribute("value", msg.data.NgaySinh);
       b!.value = msg.data.NgaySinh;
       b?.dispatchEvent(event);
+      let c:HTMLInputElement|null= document.querySelector("#submit");
+      c?.click()
     }
   }
 });

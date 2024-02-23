@@ -9,15 +9,20 @@ window.onload = () => {
     console.log("chay contentScript");
 };
 document.addEventListener("DOMContentLoaded", function () {
-    console.log('chay');
+    console.log("chay");
 });
 chrome.runtime.onMessage.addListener((msg, sender, callback) => {
     if (msg) {
         if (msg.message === "ADD") {
-            console.log(msg);
-            document.getElementById("HoTen").setAttribute("value", msg.data.Name);
-            document.getElementById("NgaySinh").setAttribute("value", msg.data.NgaySinh);
-            callback(msg);
+            var event = new Event("input", { bubbles: true });
+            let a = document.querySelector("#HoTen");
+            a?.setAttribute("value", msg.data.Name);
+            a.value = msg.data.Name;
+            a?.dispatchEvent(event);
+            let b = document.querySelector("#NgaySinh");
+            b?.setAttribute("value", msg.data.NgaySinh);
+            b.value = msg.data.NgaySinh;
+            b?.dispatchEvent(event);
         }
     }
 });

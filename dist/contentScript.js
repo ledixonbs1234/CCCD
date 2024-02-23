@@ -15,6 +15,8 @@ chrome.runtime.onMessage.addListener((msg, sender, callback) => {
     if (msg) {
         if (msg.message === "ADD") {
             console.log(msg);
+            document.getElementById("HoTen").setAttribute("value", msg.data.Name);
+            document.getElementById("NgaySinh").setAttribute("value", msg.data.NgaySinh);
             callback(msg);
         }
     }

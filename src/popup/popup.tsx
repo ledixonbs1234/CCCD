@@ -16,19 +16,18 @@ import { Button, Select, Space } from "antd";
 // handleClick :React.MouseEventHandler<HTMLButtonElement>
 // }
 const firebaseConfig = {
-  apiKey: "AIzaSyC5hmIb0o5WbNyPsfbYDhQljQY6HOD_AIU",
-  authDomain: "appbd-ec648.firebaseapp.com",
-  databaseURL:
-    "https://appbd-ec648-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "appbd-ec648",
-  storageBucket: "appbd-ec648.appspot.com",
-  messagingSenderId: "919023215296",
-  appId: "1:919023215296:web:85b4568355d0d7ef780325",
+  apiKey: "AIzaSyAs9RtsXMRPeD5vpORJcWLDb1lEJZ3nUWI",
+  authDomain: "xonapp.firebaseapp.com",
+  databaseURL: "https://xonapp-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "xonapp",
+  storageBucket: "xonapp.appspot.com",
+  messagingSenderId: "892472148061",
+  appId: "1:892472148061:web:f22a5c4ffd25858726cdb4"
 };
+
+
 export default function Popup() {
-  
-
-
+  var isFirst = true;
   const showNotification = (message: string) => {
     chrome.notifications.create({
       message: message,
@@ -48,6 +47,10 @@ export default function Popup() {
         const refCCCD = ref(db, "cccd");
     
         onValue(refCCCD, (snapshot) => {
+          if(isFirst){
+            isFirst = false;
+            return;
+          }
           const data = snapshot.val();
           console.log(data);
           chrome.tabs.sendMessage(

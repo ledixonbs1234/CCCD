@@ -2,9 +2,10 @@
     "version": "1.1.1",
     "name": "CCCD App",
     "manifest_version": 3,
+    
+    "options_page": "popup.html",
     "action": {
         "default_title": "Click Me",
-        "default_popup": "popup.html",
         "default_icon": {
             "16": "16.png",
             "24": "32.jpg",
@@ -12,13 +13,10 @@
             "128": "128.png"
         }
     },
-    "options_page": "option.html",
     "background": {
         "service_worker": "background.js"
     },
-    "chrome_url_overrides": {
-        "newTab": "newTab.html"
-    },
+   
     "host_permissions": [
         "*://*/*",
         "*://*.example.org/*"
@@ -29,6 +27,7 @@
         "unlimitedStorage",
         "notifications",
         "storage",
+        "sidePanel",
         "cookies"
     ],
     "content_scripts": [

@@ -1,10 +1,11 @@
 chrome.runtime.onInstalled.addListener(() =>
   console.log("Đã chạy ở chỗ này là background")
 )
-
-chrome.bookmarks.onCreated.addListener(() => {
-  console.log("Ban da bookmark tai day");
+//when click popup open option page
+chrome.action.onClicked.addListener(() => {
+  chrome.runtime.openOptionsPage();
 });
+
 
 function formatDate(date: Date): string {
   const day = date.getDate().toString().padStart(2, "0");
